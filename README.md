@@ -1,2 +1,2 @@
-# spring-boot-crud-mysql
-Simple Spring boot CRUD REST API using MySQL
+# spring-boot-crud-rest-api-project-01
+Simple Spring boot CRUD REST API
