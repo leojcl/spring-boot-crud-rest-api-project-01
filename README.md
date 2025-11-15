@@ -166,3 +166,82 @@ Perfect for practicing API designs
 
 Later, this can be upgraded to Spring Data JPA + MySQL.
 
+🔹 10. Global Exception Handling with @ControllerAdvice
+
+The class is annotated with: @ControllerAdvice
+
+This tells Spring that the class contains global exception handlers that apply to all controllers in the application.
+
+Why it matters
+
+Separates error-handling logic from controller logic
+
+Ensures consistent error responses
+
+Reduces duplicated try/catch blocks
+
+Improves maintainability
+
+🔹 11. Handling Custom Exceptions
+
+The first handler specifically catches your custom exception:
+
+@ExceptionHandler
+public ResponseEntity<BookErrorResponse> handleException(BookNotFoundException exc)
+
+Purpose
+
+Used when a requested book does not exist
+
+Returns a structured JSON error with:
+
+HTTP status 404
+
+Error message
+
+Timestamp
+
+Why it matters
+
+Custom exceptions improve clarity and provide meaningful domain-level error messages.
+
+🔹 12. Consistent Error Response Format (BookErrorResponse)
+
+Whenever an exception occurs, the API returns a standardized error object containing:
+
+status → HTTP status code
+
+message → Human-readable error message
+
+timeStamp → When the error happened
+
+Why it matters
+
+Makes debugging easier
+
+Provides clear feedback for API clients
+
+Ensures consistency across all endpoints
+
+🔹 13. Fallback Exception Handler
+
+The second handler:
+
+@ExceptionHandler
+public ResponseEntity<BookErrorResponse> handleException(Exception exc)
+
+Purpose
+
+Catches any unhandled exceptions
+
+Returns HTTP 400 Bad Request with message "Invalid request"
+
+Why it matters
+
+Protects the API from exposing internal errors
+
+Ensures predictable response format
+
+Improves security by hiding stack traces
+
+🔹 14. 
